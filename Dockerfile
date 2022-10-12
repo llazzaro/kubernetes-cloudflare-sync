@@ -10,5 +10,5 @@ RUN go build -o /go/bin/app
 
 # Now copy it into our static image.
 FROM gcr.io/distroless/static-debian10
-COPY --from=build /go/bin/app /
-CMD ["/app"]
+COPY --from=build /go/bin/app /bin/kubernetes-cloudflare-sync
+ENTRYPOINT ["/bin/kubernetes-cloudflare-sync"]
